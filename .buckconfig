@@ -3,6 +3,7 @@ root = .
 prelude = prelude
 toolchains = toolchains
 none = none
+pip = pip
 
 [repository_aliases]
 config = prelude
