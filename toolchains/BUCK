@@ -1,4 +1,5 @@
 load("@prelude//toolchains:cxx.bzl", "system_cxx_toolchain")
+load("@prelude//toolchains:remote_test_execution.bzl", "remote_test_execution_toolchain")
 
 # All the default toolchains, suitable for a quick demo or early prototyping.
 # Most real projects should copy/paste the implementation to configure them.
@@ -11,3 +12,7 @@ load("@prelude//toolchains:python.bzl", "system_python_toolchain", "system_pytho
 
 system_python_bootstrap_toolchain(name = "python_bootstrap", visibility = ["PUBLIC"])
 system_python_toolchain(name = "python", visibility = ["PUBLIC"])
+remote_test_execution_toolchain(
+    name = "remote_test_execution",
+    visibility = ["PUBLIC"],
+)

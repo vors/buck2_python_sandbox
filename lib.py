@@ -1,6 +1,4 @@
 import torch
 
-def foo():
-
-    print('hello from foo')
-    return 42
+def add_torch(a, b):
+    return torch.tensor(a) + torch.tensor(b)

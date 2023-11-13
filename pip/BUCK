@@ -26,8 +26,23 @@ prebuilt_python_library(
     visibility = ["PUBLIC"],
 )
 
-remote_file(
+alias(
     name = "torch-download",
+    actual = select({
+        "@prelude//os:linux": ":torch-download-linux",
+        "@prelude//os:macos": ":torch-download-macos",
+    }),
+)
+
+remote_file(
+    name = "torch-download-linux",
+    url = "https://files.pythonhosted.org/packages/6d/13/b5e8bacd980b2195f8a1741ce11cbb9146568607795d5e4ff510dcff1064/torch-2.1.0-cp310-cp310-manylinux1_x86_64.whl",
+    sha256 = "bf57f8184b2c317ef81fb33dc233ce4d850cd98ef3f4a38be59c7c1572d175db",
+    out = "torch-2.1.0-cp310-cp310-manylinux1_x86_64.whl",
+)
+
+remote_file(
+    name = "torch-download-macos",
     url = "https://files.pythonhosted.org/packages/67/d8/98b2836bd83707ecf27d66587fab9dedcfe746efab775042b93cd146d027/torch-2.1.0-cp310-none-macosx_10_9_x86_64.whl",
     sha256 = "101c139152959cb20ab370fc192672c50093747906ee4ceace44d8dd703f29af",
     out = "torch-2.1.0-cp310-none-macosx_10_9_x86_64.whl",

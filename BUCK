@@ -4,8 +4,8 @@ python_library(
     deps = ["pip//:torch"],
 )
 
-python_binary(
+python_test(
     name = "main",
-    main = "main.py",
+    srcs = ["main.py"],
     deps = [":lib"],
 )
