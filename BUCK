@@ -6,6 +6,9 @@ python_library(
 
 python_test(
     name = "main",
-    srcs = ["main.py"],
+    srcs = [
+        "main.py",
+        "test2.py",
+    ],
     deps = [":lib"],
 )
