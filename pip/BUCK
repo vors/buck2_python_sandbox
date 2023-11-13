@@ -1,26 +1,70 @@
-# A simple prebuilt_python_library with no external dependencies.
 remote_file(
-    name = "requests-download",
-    url = "https://files.pythonhosted.org/packages/51/bd/23c926cd341ea6b7dd0b2a00aba99ae0f828be89d72b2190f27c11d4b7fb/requests-2.22.0-py2.py3-none-any.whl",
-    sha1 = "e1fc28120002395fe1f2da9aacea4e15a449d9ee",
-    out = "requests-2.22.0-py2.py3-none-any.whl",
+    name = "certifi-download",
+    url = "https://files.pythonhosted.org/packages/4c/dd/2234eab22353ffc7d94e8d13177aaa050113286e93e7b40eae01fbf7c3d9/certifi-2023.7.22-py3-none-any.whl",
+    sha256 = "92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9",
+    out = "certifi-2023.7.22-py3-none-any.whl",
+)
+
+prebuilt_python_library(
+    name = "certifi",
+    binary_src = ":certifi-download",
+    deps = [],
+    visibility = ["PUBLIC"],
 )
 
 remote_file(
-    name = "chardet-download",
-    url = "https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl",
-    sha1 = "2facc0387556aa8a2956ef682d49fc3eae56d30a",
-    out = "chardet-5.2.0-py3-none-any.whl",
+    name = "urllib3-download",
+    url = "https://files.pythonhosted.org/packages/d2/b2/b157855192a68541a91ba7b2bbcb91f1b4faa51f8bae38d8005c034be524/urllib3-2.0.7-py3-none-any.whl",
+    sha256 = "fdb6d215c776278489906c2f8916e6e7d4f5a9b602ccbcfdf7f016fc8da0596e",
+    out = "urllib3-2.0.7-py3-none-any.whl",
+)
+
+prebuilt_python_library(
+    name = "urllib3",
+    binary_src = ":urllib3-download",
+    deps = [],
+    visibility = ["PUBLIC"],
+)
+
+remote_file(
+    name = "charset_normalizer-download",
+    url = "https://files.pythonhosted.org/packages/4f/d1/d547cc26acdb0cc458b152f79b2679d7422f29d41581e6fa907861e88af1/charset_normalizer-3.3.2-cp37-cp37m-macosx_10_9_x86_64.whl",
+    sha256 = "95f2a5796329323b8f0512e09dbb7a1860c46a39da62ecb2324f116fa8fdc85c",
+    out = "charset_normalizer-3.3.2-cp37-cp37m-macosx_10_9_x86_64.whl",
+)
+
+prebuilt_python_library(
+    name = "charset_normalizer",
+    binary_src = ":charset_normalizer-download",
+    deps = [],
+    visibility = ["PUBLIC"],
+)
+
+remote_file(
+    name = "requests-download",
+    url = "https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl",
+    sha256 = "58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f",
+    out = "requests-2.31.0-py3-none-any.whl",
 )
 
 prebuilt_python_library(
     name = "requests",
     binary_src = ":requests-download",
-    # deps = [":chardet"],
+    deps = [":charset_normalizer", ":idna", ":urllib3", ":certifi"],
     visibility = ["PUBLIC"],
 )
 
-prebuilt_python_library(
-    name = "chardet",
-    binary_src = ":chardet-download",
+remote_file(
+    name = "idna-download",
+    url = "https://files.pythonhosted.org/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl",
+    sha256 = "90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2",
+    out = "idna-3.4-py3-none-any.whl",
 )
+
+prebuilt_python_library(
+    name = "idna",
+    binary_src = ":idna-download",
+    deps = [],
+    visibility = ["PUBLIC"],
+)
+
