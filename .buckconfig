@@ -16,6 +16,8 @@ buck = none
 [parser]
 target_platform_detector_spec = target:root//...->prelude//platforms:default
 
+# This section is needed to avoid unnecessary re-download when prelude is changed
+# See some details in https://discord.com/channels/1100487223746510850/1100487225889796118/1173715638318022706
 [buck2]
 materializations = deferred
 hash_all_commands = true
