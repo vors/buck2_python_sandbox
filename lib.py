@@ -1,4 +1,4 @@
-import requests
+import torch
 
 def foo():
 

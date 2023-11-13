@@ -1,7 +1,7 @@
 python_library(
     name = "lib",
     srcs = ["lib.py"],
-    deps = ["pip//:requests"],
+    deps = ["pip//:torch"],
 )
 
 python_binary(
